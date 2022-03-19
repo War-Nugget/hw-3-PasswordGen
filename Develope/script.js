@@ -1,6 +1,15 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
+var enter;
+var numbers;
+var specialCharacters;
+var uppercase;
+var lowercase;
 
+function generatePassword
+var generateBtn = document.querySelector("#generate");
+function generateBtn(){
+  window.alert("Yess or no?")
+}
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
