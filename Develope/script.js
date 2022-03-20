@@ -1,5 +1,5 @@
 // Assignment Code
-var enter;
+var userInput;
 var confirmNumber;
 var confirmSpecials;
 var confirmUpper;
@@ -20,13 +20,15 @@ var upperLetters = lowerLetters.map(toUpper);
 
 var space = [];
 
-function generatePassword();
+
 var generateBtn = document.querySelector("#generate");
-function generateBtn(){
-  window.alert("Yess or no?")
-}
+
+generateBtn.addEventListener("click", function(){
+  ps = generatePassword();
+  document.getElementById("password").placeholer = ps;
+});
 // Write password to the #password input
-function writePassword() {
+function generatePassword() {
   //User input for how many characters
   userInput = parseInt(prompt("How many characters would you like your password length? Enter between 8 and 128"));
 
@@ -100,13 +102,21 @@ else if (confirmLower){
 };
 var password = [];
 
+for (var i = 0; i < userInput; i++){
+  var picks = choices[Math.floor(Math.random() * choices.length)];
+  password.push(picks);
+}
 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+var ps = password.join("");
+userInput(ps);
+return ps;
 
-  passwordText.value = password;
+  //var password = generatePassword();
+ // var passwordText = document.querySelector("#password");
+
+ // passwordText.value = password;
 
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+//generateBtn.addEventListener("click", writePassword);
