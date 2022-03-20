@@ -35,24 +35,24 @@ function generatePassword() {
   if(!userInput){
     alert("You must enter a number.");
   }
-  else if (enter < 8 || enter > 128){
-    alert("You must enter a number between 8 and 100.")
+  else if (userInput < 8 || userInput > 128){
+    alert("You must enter a number between 8 and 128.")
   }
   else {
     confirmNumber = confirm("Do you want numbers?");
-    confirmSpecials = confirm("Do you want special characters");
-    confirmUpper = confirm("Do you want uppercase letters?");
-    confirmLower = confirm("Do you want lowercase letters?");
+    confirmSpecials = confirm("Do you want special characters?");
+    confirmUpper = confirm("Do you want Uppercase?");
+    confirmLower = confirm("Do you want Lowercase?");
   };
-  // If all inputs are negative
+  // If all inputs are negative ==============================================  
   if (!confirmLower && !confirmNumber && !confirmSpecials && !confirmUpper){
     choices = alert("You must choose at least one of the criteria.")
   }
-
+// If all inputs are true ==============================================
   else if (confirmLower && confirmNumber && confirmSpecials && confirmUpper){
     choices = upperLetters.concat(numbers, specialCharacters, lowerLetters);
   }
-//For 3 positive options 
+//For 3 positive options ==============================================
 
  else if (confirmNumber && confirmSpecials && confirmUpper){
    choices = numbers.concat(specialCharacters, upperLetters);
@@ -67,7 +67,7 @@ else if (confirmUpper && confirmSpecials && confirmLower){
   choices = numbers.concat(specialCharacters, lowerLetters);
 }
 
-//For 2 Positive options 
+//For 2 Positive options ==============================================
 else if (confirmNumber && confirmSpecials){
   choices = numbers.concat(specialCharacters);
 }
@@ -87,7 +87,7 @@ else if (confirmNumber && confirmUpper){
   choices = lowerLetters.concat(specialCharacters);
 }
 
-//For 1 positive
+//For 1 positive ==============================================
 else if (confirmNumber){
   choices = numbers;
 }
@@ -102,21 +102,20 @@ else if (confirmLower){
 };
 var password = [];
 
+//Randomization of the password ==============================================
 for (var i = 0; i < userInput; i++){
   var picks = choices[Math.floor(Math.random() * choices.length)];
   password.push(picks);
 }
-
+//Combines the password into a string (Thanks google) ==============================================
 var ps = password.join("");
-userInput(ps);
+UserInput(ps);
 return ps;
 
-  //var password = generatePassword();
- // var passwordText = document.querySelector("#password");
+//Adds the password to the box ==============================================
 
- // passwordText.value = password;
-
+function UserInput(ps){
+  document.getElementById("password").textContent = ps;
 }
 
-// Add event listener to generate button
-//generateBtn.addEventListener("click", writePassword);
+}
